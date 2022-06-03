@@ -11,18 +11,6 @@ orbs:
 # Orchestrate or schedule a set of jobs
 
 commands:
-
-  #Save IP address to the inventory file
-  save_ip_address_to_inventory_file:
-    steps:
-      - checkout
-      - run:
-          name: Save IP Address to Inventory File
-          command: |
-            aws ec2 describe-instances \
-              --query 'Reservations[*].Instances[*].PublicIpAddress' \
-              --filters "Name=tag:Project,Values=udacity" \
-              --output text >> inventory
   # Exercise - Rollback
   destroy_environment:
     steps:
@@ -34,7 +22,6 @@ commands:
           command: |
             aws cloudformation delete-stack --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:5}
  
-
 jobs:
   create_infrastructure: 
       docker:
@@ -48,7 +35,6 @@ jobs:
                 --template-file template.yml \
                 --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:5} \
                 --region us-east-1
-        - save_ip_address_to_inventory_file
         - destroy_environment
   # Exercise: Config and Deployment
   configure_infrastructure: 

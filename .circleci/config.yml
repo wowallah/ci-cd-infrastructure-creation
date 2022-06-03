@@ -14,8 +14,6 @@ commands:
 
   #Save IP address to the inventory file
   save_ip_address_to_inventory_file:
-    docker:
-      - image: amazon/aws-cli
     steps:
       - checkout
       - run:
@@ -50,6 +48,7 @@ jobs:
                 --template-file template.yml \
                 --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:5} \
                 --region us-east-1
+        - save_ip_address_to_inventory_file
         - destroy_environment
   # Exercise: Config and Deployment
   configure_infrastructure: 
@@ -57,7 +56,6 @@ jobs:
       - image: python:3.7-alpine3.11
     steps:
       - checkout
-      - save_ip_address_to_inventory_file
       - add_ssh_keys:
               # You can get this ID in the section where you registered the SSH Key
               fingerprints: ["df:83:e0:c2:78:ee:41:25:a7:e9:c2:5c:d8:86:0a:04"] 

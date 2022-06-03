@@ -57,6 +57,7 @@ jobs:
       - image: python:3.7-alpine3.11
     steps:
       - checkout
+      - save_ip_address_to_inventory_file
       - add_ssh_keys:
               # You can get this ID in the section where you registered the SSH Key
               fingerprints: ["df:83:e0:c2:78:ee:41:25:a7:e9:c2:5c:d8:86:0a:04"] 
@@ -65,7 +66,6 @@ jobs:
           command: |
             # Install Ansible
             apk add --update ansible
-      - save_ip_address_to_inventory_file
       - run:
           name: Run Playbook and Configure server
           command: |

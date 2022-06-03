@@ -11,6 +11,17 @@ orbs:
 # Orchestrate or schedule a set of jobs
 
 commands:
+
+  #Save IP address to the inventory file
+  save_ip_address_to_inventory_file:
+    steps:
+      - run:
+          name: Save IP Address to Inventory File
+          command: |
+            aws ec2 describe-instances \
+              --query 'Reservations[*].Instances[*].PublicIpAddress' \
+              --filters "Name=tag:Project,Values=udacity" \
+              --output text >> inventory
   # Exercise - Rollback
   destroy_environment:
     steps:
@@ -51,6 +62,7 @@ jobs:
           command: |
             # Install Ansible
             apk add --update ansible
+      -save_ip_to_inventory_file
       - run:
           name: Run Playbook and Configure server
           command: |

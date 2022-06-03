@@ -62,7 +62,7 @@ jobs:
           command: |
             # Install Ansible
             apk add --update ansible
-      -save_ip_to_inventory_file
+      -save_ip_address_to_inventory_file
       - run:
           name: Run Playbook and Configure server
           command: |

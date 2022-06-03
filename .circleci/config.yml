@@ -14,8 +14,8 @@ commands:
 
   #Save IP address to the inventory file
   save_ip_address_to_inventory_file:
-      docker:
-        - image: amazon/aws-cli
+    docker:
+      - image: amazon/aws-cli
     steps:
       - run:
           name: Save IP Address to Inventory File

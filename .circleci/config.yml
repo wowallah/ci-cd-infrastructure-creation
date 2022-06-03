@@ -17,6 +17,7 @@ commands:
     docker:
       - image: amazon/aws-cli
     steps:
+      - checkout
       - run:
           name: Save IP Address to Inventory File
           command: |

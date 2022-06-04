@@ -56,8 +56,8 @@ jobs:
             ansible-playbook -i inventory main.yml
 workflows:
   my_workflow:
-      jobs:
-        # - create_infrastructure
-        - configure_infrastructure:
-            # requires:
-            #   - create_infrastructure
+    jobs:
+      # - create_infrastructure
+      - configure_infrastructure:
+          # requires:
+          #   - create_infrastructure

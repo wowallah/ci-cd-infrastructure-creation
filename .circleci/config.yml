@@ -65,4 +65,4 @@ workflows:
     jobs:
       # - welcome/run
       - create_infrastructure
-      - configure_infrastructure
+      # - configure_infrastructure

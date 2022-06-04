@@ -47,7 +47,7 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: ["df:83:e0:c2:78:ee:41:25:a7:e9:c2:5c:d8:86:0a:04"] # You can get this ID in the section where you registered the SSH Key
+          fingerprints: ["1d:a3:cf:a7:e1:b0:33:cd:c9:7b:96:a0:55:70:43:10"] # You can get this ID in the section where you registered the SSH Key
       - run:
           name: Install dependencies
           command: |
@@ -64,5 +64,5 @@ workflows:
     # Run the welcome/run job in its own container
     jobs:
       # - welcome/run
-      # - create_infrastructure
-      - configure_infrastructure
+      - create_infrastructure
+      # - configure_infrastructure

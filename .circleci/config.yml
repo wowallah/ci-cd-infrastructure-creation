@@ -90,7 +90,7 @@ workflows:
       # - welcome/run
       - create_infrastructure
       # - configure_infrastructure
-      - smoke_test
+      - smoke_test:
           requires:
             -create_infrastructure
 

@@ -44,7 +44,7 @@ jobs:
             cd ansibles
             aws ec2 describe-instances --query 'Reservations[*].Instances[*].PublicIpAddress' --output text >> inventory
       - persist_to_workspace:
-          root: ./
+          root: 
           paths:
             - inventory
       - destroy_environment
@@ -56,7 +56,7 @@ jobs:
       - image: python:3.11-rc-alpine
     steps:
       - attach_workspace:
-        at: ./
+        at:
       - checkout
       - add_ssh_keys:
           fingerprints: ["1d:a3:cf:a7:e1:b0:33:cd:c9:7b:96:a0:55:70:43:10"] # You can get this ID in the section where you registered the SSH Key
